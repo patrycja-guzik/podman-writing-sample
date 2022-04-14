@@ -456,11 +456,11 @@ Application programming interface (API) provides a simple method of communicatio
 
 Podman REST API is split into two layers:
 \begin{mditemize}
-\item compatible with Docker called \mdinlinecode{Compat API}
-\item native API called \mdinlinecode{Libpod API} providing access to additional features not available in Docker, such as pods.
+\item Compatible with Docker called \mdinlinecode{Compat API}
+\item Native API called \mdinlinecode{Libpod API} providing access to additional features not available in Docker, such as pods
 \end{mditemize}
 
-New users should use native \mdinlinecode{Libpod API} when starting working with Podman. \mdinlinecode{compat API} is provided for the current Docker users to help adopt Podman instead of Docker.
+New users should use native \mdinlinecode{Libpod API} when starting working with Podman. \mdinlinecode{Compat API} is provided for the current Docker users to help adopt Podman instead of Docker.
 
 \hypertarget{creating-pods-using-rest-api}{%
 \section{Creating pods using REST
@@ -472,7 +472,7 @@ API}\label{creating-pods-using-rest-api}}
 
 \begin{mditemize}
 \item
-  \mdinlinecode{podman}, and \mdinlinecode{curl} packages are installed.
+  \mdinlinecode{Podman} and \mdinlinecode{curl} packages are installed.
   
 \begin{mdcodeblock}
 $ sudo dnf install podman curl
@@ -543,12 +543,11 @@ $ curl -XPOST --unix-socket /run/user/${UID}/podman/podman.sock \
  \textbf{Expected output:} JSON structure with pod ID.
 
 
-\item  Create a configuration for the mariadb database container. Save it as
-  the \mdinlinecode{mariadb.conf}.
+\item  Create a configuration for the \mdinlinecode{mariadb} database container named \mdinlinecode{mariadb.conf}.
 \begin{mdcodeblock}
 {
     "image" : "wordpress",
-    "env": {\begin{mdblockquote}
+    "env": {
         "MYSQL_ROOT_PASSWORD": "w0rdpr3ss",
         "MYSQL_DATABASE": "wp",
         "MYSQL_USER" : "wordpress",
@@ -686,7 +685,7 @@ API}\label{getting-pods-using-rest-api}}
 
 \begin{mditemize}
 \item
-  \mdinlinecode{podman}, \mdinlinecode{curl}, and \mdinlinecode{jq} packages are installed.
+  \mdinlinecode{lPodman}, \mdinlinecode{curl}, and \mdinlinecode{jq} packages are installed.
   
 \begin{mdcodeblock}
 $ sudo dnf install podman curl jq
@@ -724,7 +723,7 @@ http://d/v3.0.0/libpod/pods/my-pod/top | jq
 $ curl --unix-socket /run/user/${UID}/podman/podman.sock \
 http://d/v3.0.0/libpod/pods/my-pod/json |jq
 \end{mdcodeblock}
-\textbf{Expected output:} JSON structure with all the information describing a pod, such as a name, creation timestamp, number of containers, state of containers, etc.
+\textbf{Expected output:} JSON structure with all the information describing a pod, such as a name, creation timestamp, number of containers, state of containers, and more.
 \end{mdenumerate}
 \hypertarget{additional-resources}{%
 \textbf{Additional resources}\label{additional-resources}}
@@ -745,7 +744,7 @@ API}\label{stopping-pods-using-rest-api}}
 \textbf{Prerequisites}
 \begin{mditemize}
 \item
-  \mdinlinecode{podman}, and \mdinlinecode{curl} packages are installed.
+  \mdinlinecode{Podman} and \mdinlinecode{curl} packages are installed.
   
 \begin{mdcodeblock}
 $ sudo dnf install podman curl
@@ -759,7 +758,7 @@ $ podman system service -t 0 &
 \end{mditemize}
 \textbf{Procedure}
 \begin{mdenumerate}
- \item Stop \mdinlinecode{my-pod} pod using REST API.
+ \item Stop \mdinlinecode{my-pod} pod using REST API by sending \mdinlinecode{POST} request to the \mdinlinecode{libpod/pods/my-pod/stop} endpoint.
  \begin{mdcodeblock}
 $ curl -XPOST --unix-socket /run/user/${UID}/podman/podman.sock \
 -H content-type:application/json \

@@ -414,6 +414,12 @@ A pod in Podman is a single container or a group of containers with shared resou
 
 The pod concept in Podman is based on the smallest deployable software units you can create and manage in Kubernetes. 
 
+\textbf{Additional resources:}
+\begin{itemize}
+ \item \href{https://docs.podman.io/en/latest/markdown/podman-pod.1.html}{Overview} of all  actions available to manage pods
+\end{itemize}
+
+
 \textbf{Read more:}
 \begin{mditemize}
  \item \hyperref[podman-overview]{Podman overview}
@@ -429,10 +435,10 @@ The pod concept in Podman is based on the smallest deployable software units you
 
 Podman is an open-source tool designed to create and manage pods and containers. It can be used as a drop-in replacement for docker but has unique features. Podman is:
 \begin{mditemize}
- \item daemonless - it launches pods and containers as child processes rather than a program running in the background.
-\item rootless - you don’t need root privileges to create and manage pods and containers.
-\item safe - while pods and containers don’t have root privileges, they provide a barrier against external attackers.
-\item modular - it relies on other tools to build and manage container images.
+ \item \textit{\textbf{daemonless}} - it launches pods and containers as child processes rather than a program running in the background.
+\item \textit{\textbf{rootless}} - you don’t need root privileges to create and manage pods and containers.
+\item \textit{\textbf{safe}} - while pods and containers don’t have root privileges, they provide a barrier against external attackers.
+\item \textit{\textbf{modular}} - it relies on other tools to build and manage container images.
 \end{mditemize}
 
 \hypertarget{container-overview}{%
@@ -472,7 +478,7 @@ API}\label{creating-pods-using-rest-api}}
 
 \begin{mditemize}
 \item
-  \mdinlinecode{Podman} and \mdinlinecode{curl} packages are installed.
+  \mdinlinecode{podman} and \mdinlinecode{curl} packages are installed.
   
 \begin{mdcodeblock}
 $ sudo dnf install podman curl
@@ -665,6 +671,7 @@ $ curl -XPOST --unix-socket /run/user/${UID}/podman/podman.sock \
   \end{figure}
 
 \end{mdenumerate}
+\setlength\itemsep{1em}
 \hypertarget{additional-resources}{%
 \textbf{Additional resources}\label{additional-resources}}
 
@@ -685,7 +692,7 @@ API}\label{getting-pods-using-rest-api}}
 
 \begin{mditemize}
 \item
-  \mdinlinecode{lPodman}, \mdinlinecode{curl}, and \mdinlinecode{jq} packages are installed.
+  \mdinlinecode{podman}, \mdinlinecode{curl}, and \mdinlinecode{jq} packages are installed.
   
 \begin{mdcodeblock}
 $ sudo dnf install podman curl jq
@@ -744,7 +751,7 @@ API}\label{stopping-pods-using-rest-api}}
 \textbf{Prerequisites}
 \begin{mditemize}
 \item
-  \mdinlinecode{Podman} and \mdinlinecode{curl} packages are installed.
+  \mdinlinecode{podman} and \mdinlinecode{curl} packages are installed.
   
 \begin{mdcodeblock}
 $ sudo dnf install podman curl
@@ -758,6 +765,8 @@ $ podman system service -t 0 &
 \end{mditemize}
 \textbf{Procedure}
 \begin{mdenumerate}
+\setlength\itemsep{1em}
+
  \item Stop \mdinlinecode{my-pod} pod using REST API by sending \mdinlinecode{POST} request to the \mdinlinecode{libpod/pods/my-pod/stop} endpoint.
  \begin{mdcodeblock}
 $ curl -XPOST --unix-socket /run/user/${UID}/podman/podman.sock \

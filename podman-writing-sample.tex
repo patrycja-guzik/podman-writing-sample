@@ -502,7 +502,7 @@ $ podman system service -t 0 &
 \begin{mdenumerate}
 \setlength\itemsep{1em}
 \item
-  Create a configuration file for the \mdinlinecode{mariadb} database container named \mdinlinecode{my-pod.conf}.
+  Create a configuration file for the \mdinlinecode{my-pod} pod named \mdinlinecode{my-pod.conf}.
 
 \begin{mdcodeblock}
 {
@@ -552,7 +552,7 @@ $ curl -XPOST --unix-socket /run/user/${UID}/podman/podman.sock \
 \item  Create a configuration for the \mdinlinecode{mariadb} database container named \mdinlinecode{mariadb.conf}.
 \begin{mdcodeblock}
 {
-    "image" : "wordpress",
+    "image" : "mariadb",
     "env": {
         "MYSQL_ROOT_PASSWORD": "w0rdpr3ss",
         "MYSQL_DATABASE": "wp",
@@ -657,7 +657,7 @@ $ curl -XPOST --unix-socket /run/user/${UID}/podman/podman.sock \
     -H content-type:application/json \
     http://d/v3.0.0/libpod/pods/my-pod/start
 \end{mdcodeblock}
-
+wordpresswordpress
   \textbf{Expected output:} JSON structure with pod ID and a potential error field.
 \item
   Optional: Inspect in your web browser \mdinlinecode{wordpress} application
